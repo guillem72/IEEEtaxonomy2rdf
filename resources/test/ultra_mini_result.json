@@ -1,0 +1,22 @@
+{
+    "Test Category": "IEEE",
+    "Test 1": "Test Category",
+    "Radar countermeasures": "Test 1",
+    "Military equipment": "Test Category",
+    "Military aircraft": "Military equipment",
+    "Payloads": "Military aircraft",
+    "Military satellites": "Military equipment",
+    "Weapons": "Military equipment",
+    "Guns": "Weapons",
+    "Missiles": "Weapons",
+    "Nuclear weapons": "Weapons",
+    "Projectiles": "Weapons",
+    "Radar": "Test Category",
+    "Computational and artificial intelligence": "IEEE",
+    "Artificial intelligence": "Computational and artificial intelligence",
+    "Context awareness": "Artificial intelligence",
+    "Cooperative systems": "Artificial intelligence",
+    "Decision support systems": "Artificial intelligence",
+    "Intelligent systems": "Artificial intelligence",
+    "Intelligent robots": "Intelligent systems"
+}

@@ -1,0 +1,20 @@
+Test Category
+....Test 1
+........Radar countermeasures
+....Military equipment
+........Military aircraft
+............Payloads
+........Military satellites
+........Weapons
+............Guns
+............Missiles
+............Nuclear weapons
+............Projectiles
+....Radar
+Computational and artificial intelligence
+....Artificial intelligence
+........Context awareness
+........Cooperative systems
+........Decision support systems
+........Intelligent systems
+............Intelligent robots
