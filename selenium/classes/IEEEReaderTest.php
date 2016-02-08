@@ -29,15 +29,5 @@ class IEEEReaderTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($solution,$lines);
     }
     
-    /*Doesn't work
-    public function testMiniFile2(){
-        $solution=utils\readJson($this->result);
-        $reader=new IEEEReader($this->file);
-        $lines0=$reader->read();
-        utils\saveJson("temp.json",$lines0);
-        $lines=utils\readJson("temp.json");
-        $this->assertEquals($solution,$lines);
-    }
-    */
-
+    
 }
