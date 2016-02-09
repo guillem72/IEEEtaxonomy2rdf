@@ -6,7 +6,7 @@ The aim of this project is to get the information in [IEEE taxonomy](http://www.
 
 ##Information
 
-This is a php project for the comand line. It is not still complete.
+This is a php project for the comand line. It is not still complete. The version used was php 5.6
 
 ##How to use 
 
@@ -14,6 +14,7 @@ This is a php project for the comand line. It is not still complete.
 2. Remove the lines with two entities in it (like ....Entity1........Entity2). I have done 
 it with [geany](http://www.geany.org/) and the regex \w\.+\w
 3. Then use index.php, instead of the test file ultra_mini.txt put your file.
+4. The result will be in **resources** as **ieeeTaxonomyOWL.owl**.
 
 
 

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Ontology [
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+<!ENTITY xml "http://www.w3.org/XML/1998/namespace">
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+]>
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://glluch.com/ieee_taxonomy" ontologyIRI="http://glluch.com/ieee_taxonomy">
+  <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+  <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+  <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+  <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+  <Declaration>
+    <Class IRI="#Term"/>
+  </Declaration>
+  <Declaration>
+    <ObjectProperty IRI="#narrowed"/>
+  </Declaration>
+  <Declaration>
+    <ObjectProperty IRI="#wide"/>
+  </Declaration>
+  <InverseObjectProperties>
+    <ObjectProperty IRI="#narrowed"/>
+    <ObjectProperty IRI="#wide"/>
+  </InverseObjectProperties>
+  <TransitiveObjectProperty>
+    <ObjectProperty IRI="#narrowed"/>
+  </TransitiveObjectProperty>
+  <TransitiveObjectProperty>
+    <ObjectProperty IRI="#wide"/>
+  </TransitiveObjectProperty>
+  <ObjectPropertyDomain>
+    <ObjectProperty IRI="#narrowed"/>
+    <ObjectSomeValuesFrom>
+      <ObjectProperty IRI="#wide"/>
+      <Class IRI="#Term"/>
+    </ObjectSomeValuesFrom>
+  </ObjectPropertyDomain>
+  <ObjectPropertyRange>
+    <ObjectProperty IRI="#narrowed"/>
+    <ObjectSomeValuesFrom>
+      <ObjectProperty IRI="#wide"/>
+      <Class IRI="#Term"/>
+    </ObjectSomeValuesFrom>
+  </ObjectPropertyRange>
