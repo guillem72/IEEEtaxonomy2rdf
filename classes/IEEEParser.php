@@ -83,16 +83,20 @@ class IEEEParser {
         $ultim = [];
         $ultim[-1] = "IEEE";
         $rest_words = $this->elements;
-        $this->taxonomy[$rest_words[0]->term] = "IEEE";        
+        $this->taxonomy[$rest_words[0]->term] =["IEEE"];        
         $ultim[0] = \array_shift($rest_words);
         while (\count($rest_words) > 0) {
             $actual = \array_shift($rest_words);
-            if (\is_object($ultim[$actual->level - 1])) {
-                $this->taxonomy[trim($actual->term)] = trim($ultim[$actual->level - 1]->term);
-            } else {
-                $this->taxonomy[trim($actual->term)] = trim($ultim[$actual->level - 1]);
+            if (!isset($this->taxonomy[trim($actual->term)])) {
+                $this->taxonomy[trim($actual->term)] = [];
             }
-            //echo "El valor assignat a ".$actual->term." és  tipus ".gettype($ultim[$actual->level-1]);
+            if (\is_object($ultim[$actual->level - 1])) {//sometimes is an object, sometimes is a string
+                \array_push($this->taxonomy[trim($actual->term)], trim($ultim[$actual->level - 1]->term));
+            } else {
+                 \array_push($this->taxonomy[\trim($actual->term)], \trim($ultim[$actual->level - 1]));
+                //$this->taxonomy[trim($actual->term)] = trim($ultim[$actual->level - 1]);
+            }
+           
             $ultim[$actual->level] = trim($actual->term);
         }//end while
         //var_dump($ultim);
