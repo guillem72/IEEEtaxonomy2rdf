@@ -52,8 +52,9 @@ class WriteOwl {
     public function write($parsed) {
         $t = file_get_contents($this->startFile);
         $lines = explode("\n", $t);
-        foreach ($parsed as $node => $parent) {
-            \array_push($lines, $this->buildSnipet($node, $parent));
+        foreach ($parsed as $node0 => $parent0) {
+            $node=  \trim($node0); $parent=\trim($parent0);
+            \array_push($lines, $this->buildSnipet($node,$parent));
         }
         $onto = implode("\n", $lines);
         $onto.="</Ontology>";
@@ -71,9 +72,10 @@ class WriteOwl {
      * @var $parent string The parent of the node. 
      *      */
     protected function buildSnipet($node, $parent) {
-        $nodeId = \str_replace(" ", "_", trim($node));
-        $parentId = \str_replace(" ", "_", trim($parent));
-        if (trim($parent) !== $this->root) {
+        $nodeId = \str_replace(" ", "_", $node);
+        $parentId =\str_replace(" ", "_", $parent);
+       // if (strlen($node)!==strlen($node0)) echo "node=".$node.", nodeid= ".$nodeId.".".  \PHP_EOL;
+        if ($parent !== $this->root) {
             return " <ClassAssertion>
     <Class IRI=\"#Term\"/>
     <NamedIndividual IRI=\"#" . $nodeId . "\"/>
@@ -101,5 +103,5 @@ class WriteOwl {
         }
     }
 
-//protected function buildSnipet(
+
 }

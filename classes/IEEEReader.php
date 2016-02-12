@@ -19,18 +19,17 @@ namespace taxo2rdf;
 class IEEEReader {
 
     /**
-@var $lines string[] internal array to process the data
+      @var $lines string[] internal array to process the data
      *      */
     protected $lines = array();
-    
-        /**
-@var $filename string the name of the file to be process. 
-         * The class is robust against term in two diferents lines, as 
-         * ............Polarimetric synthetic aperture
-radar
-         * if the second line starts with lowercase
+
+    /**
+      @var $filename string the name of the file to be process.
+     * The class is robust against term in two diferents lines, as 
+     * ............Polarimetric synthetic aperture
+      radar
+     * if the second line starts with lowercase
      *      */
-    
     protected $filename = false;
 
     function getFilename() {
@@ -55,7 +54,7 @@ radar
     }
 
 //\w\.+\w
-    
+
     /**
 
      * This function try to join terms with words in diferent lines. The second line have to start
@@ -66,17 +65,19 @@ radar
         $pre_words = [];
         $previous = false;
         foreach ($this->lines as $num_line => $raw_word) {
-            $temporal = \str_replace(".", "", $raw_word);
-            if (ucfirst($temporal) !== $temporal AND $temporal !== "pH measurement") { //no starts with Capital letter
-                if ($previous) {
-                    $pre_words[] = trim($previous) . " " . trim($raw_word);
-                    $m = $raw_word . "( " . $num_line . ") has been aded to the previos one.";
-                    $m.= \PHP_EOL . " Result=" . trim($previous) . " " . trim($raw_word) . PHP_EOL;
-                    echo $m;
-                }//  if ($previous)              
-            } else { //else of  if (ucfirst($temporal)!==$temporal) 
-                $pre_words[] = \trim($previous);
-                $previous = $raw_word;
+            $temporal = \str_replace(".", "", \trim($raw_word));
+            if ($temporal !== "") {
+                if (ucfirst($temporal) !== $temporal AND $temporal !== "pH measurement") { //no starts with Capital letter
+                    if ($previous) {
+                        $pre_words[] = $previous . " " . trim($raw_word);
+                        $m = $raw_word . "( " . $num_line . ") has been aded to the previos one.";
+                        $m.= \PHP_EOL . " Result=" . trim($previous) . " " . trim($raw_word) . PHP_EOL;
+                        // echo $m;
+                    }//  if ($previous)              
+                } else { //else of  if (ucfirst($temporal)!==$temporal) 
+                    $pre_words[] = \trim($previous);
+                    $previous = $raw_word;
+                }
             }
         }//foreach
         $pre_words[] = trim($this->lines[\count($this->lines) - 1]);
@@ -89,21 +90,24 @@ radar
      * @return string[] All elements of the array are different from "" 
      *      */
     protected function isNotEmpty($values) {
-        $gw=[];
-        foreach ($values as $value)
-        {
-            if (\trim($value) !== "") {
-                $gw[] = $value;
+        $gw = [];
+        foreach ($values as $value0) {
+            $value=trim($value0);
+            if ($value !== "") {
+                
+                //echo "In= " . $value0 . ", out=" . \trim($value) . "." . \PHP_EOL;
+                $gw[] = \trim($value);
             }
         }
         return $gw;
     }
 
+    
+
     /**
      * Read the file and return an array of terms (with dots)
      * @return string[] The terms with dots.
      */
-    
     public function read() {
         if (!$this->filename) {
             return false;
@@ -117,6 +121,5 @@ radar
         //var_dump($lines);
         return $this->lostWords();
     }
-
 
 }

@@ -16,7 +16,7 @@ class IEEETerm {
     }
 
     function setParent($parent) {
-        $this->parent = $parent;
+        $this->parent = trim($parent);
     }
 
         function getTerm() {
@@ -28,7 +28,7 @@ class IEEETerm {
     }
 
     function setTerm($term) {
-        $this->term = $term;
+        $this->term =trim($term);
     }
 
     function setLevel($level) {
@@ -36,8 +36,8 @@ class IEEETerm {
     }
 
     function __construct($term, $level) {
-        $this->term = $term;
-        $this->level = $level;
+        $this->term = trim($term);
+        $this->level = trim($level);
     }
 
  public function toString(){

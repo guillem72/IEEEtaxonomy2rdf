@@ -88,12 +88,12 @@ class IEEEParser {
         while (\count($rest_words) > 0) {
             $actual = \array_shift($rest_words);
             if (\is_object($ultim[$actual->level - 1])) {
-                $this->taxonomy[$actual->term] = $ultim[$actual->level - 1]->term;
+                $this->taxonomy[trim($actual->term)] = trim($ultim[$actual->level - 1]->term);
             } else {
-                $this->taxonomy[$actual->term] = $ultim[$actual->level - 1];
+                $this->taxonomy[trim($actual->term)] = trim($ultim[$actual->level - 1]);
             }
             //echo "El valor assignat a ".$actual->term." és  tipus ".gettype($ultim[$actual->level-1]);
-            $ultim[$actual->level] = $actual->term;
+            $ultim[$actual->level] = trim($actual->term);
         }//end while
         //var_dump($ultim);
         return $this->taxonomy;
@@ -106,7 +106,7 @@ class IEEEParser {
     protected function addLevels() {
         foreach ($this->lines as $line) {
             $level = $this->numDots($line) / $this->diff;
-            $temporal = \str_replace(".", "", $line);
+            $temporal = \trim(\str_replace(".", "", $line));
             $this->elements[] = new IEEETerm($temporal, $level);
         }
     }
