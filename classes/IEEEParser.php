@@ -11,9 +11,16 @@ include_once __DIR__ . "/IEEETerm.php";
  */
 class IEEEParser {
  /**
-  * @var $taxonomy string[] The final product. Is an array array "entity => parent entity"
+  * @var $taxonomy string[] The final product. Is an array array "entity => parents[]"
   */
     protected $taxonomy = [];
+    
+     /**
+  * @var $taxonomyBis string[] The final product. Is an array array "parent => childs[]"
+  */
+    protected $taxonomyBis = [];
+    
+    
     
      /**
      * @var $elements IEEETerms[]. Is the result of the function addLevels()
@@ -30,8 +37,11 @@ class IEEEParser {
      */
     protected $diff = 4;
 
-    
-    function getDiff() {
+    function getTaxonomyBis() {
+        return $this->taxonomyBis;
+    }
+
+        function getDiff() {
         return $this->diff;
     }
 
@@ -65,42 +75,38 @@ class IEEEParser {
      */
     public function parse() {
         $this->addLevels();
-        
-        /*
-         * ultim is an array which key goes to the last term (string) of that level, for example
-            array(5) {
-            [-1] =>
-            string(4) "IEEE"
-            [0] =>
-            string(41) "Computational and artificial intelligence"
-            [1] =>
-            string(23) "Artificial intelligence"
-            [2] =>
-            string(19) "Intelligent systems"
-            [3] =>
-            string(18) "Intelligent robots"
-}         */
+       
         $ultim = [];
         $ultim[-1] = "IEEE";
         $rest_words = $this->elements;
-        $this->taxonomy[$rest_words[0]->term] =["IEEE"];        
+        $this->taxonomy[$rest_words[0]->term] =["IEEE"];   
+        $this->taxonomyBis["IEEE"]=[$rest_words[0]->term];
         $ultim[0] = \array_shift($rest_words);
         while (\count($rest_words) > 0) {
             $actual = \array_shift($rest_words);
-            if (!isset($this->taxonomy[trim($actual->term)])) {
-                $this->taxonomy[trim($actual->term)] = [];
-            }
-            if (\is_object($ultim[$actual->level - 1])) {//sometimes is an object, sometimes is a string
-                \array_push($this->taxonomy[trim($actual->term)], trim($ultim[$actual->level - 1]->term));
-            } else {
-                 \array_push($this->taxonomy[\trim($actual->term)], \trim($ultim[$actual->level - 1]));
-                //$this->taxonomy[trim($actual->term)] = trim($ultim[$actual->level - 1]);
-            }
-           
+            $this->add($actual, $ultim);
             $ultim[$actual->level] = trim($actual->term);
         }//end while
         //var_dump($ultim);
         return $this->taxonomy;
+    }
+    
+    protected function add($child,$candidates){
+        $parent=null; 
+        if (!isset($this->taxonomy[trim($child->term)])) {
+                $this->taxonomy[trim($child->term)] = [];
+            }
+            if (\is_object($candidates[$child->level - 1])) {//sometimes is an object, sometimes is a string
+               $parent=\trim($candidates[$child->level - 1]->term);
+               } else {
+                 $parent=  \trim($candidates[$child->level - 1]);
+                //$this->taxonomy[trim($actual->term)] = trim($ultim[$actual->level - 1]);
+            }
+   \array_push($this->taxonomy[trim($child->term)], $parent);  
+   if (!isset($this->taxonomyBis[$parent])) {
+            $this->taxonomyBis[$parent] = [];
+        }
+   \array_push($this->taxonomyBis[$parent],  \trim($child->term));
     }
 
    /**
