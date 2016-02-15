@@ -45,7 +45,7 @@ class WriteOwl {
     /**
      * Create a file with the terms in the array. The array must be in the form $node => $parent.
      * If an specific IRI is needed, it has to be change by hand.
-     * @var $parsed string[] An array $node => parents[  ]
+     * @param string[] $parsed  An array $node => parents[  ]
      */
     public function write($parsed) {
         $t = file_get_contents($this->startFile);
@@ -64,8 +64,8 @@ class WriteOwl {
 
     /**
      * An internal function which merge some xml to create the entries for each Entity
-     * @var $node string The node.
-     * @var $parent string The parent of the node. 
+     * @param  string $node The node.
+     * @param  string $parent The parent of the node. 
      *      */
     protected function buildSnipet($node, $parents) {
         $nodeId = \str_replace(" ", "_", $node);

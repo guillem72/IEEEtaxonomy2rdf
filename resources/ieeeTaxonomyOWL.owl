@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Ontology [
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+<!ENTITY xml "http://www.w3.org/XML/1998/namespace">
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+]>
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://glluch.com/ieee_taxonomy" ontologyIRI="http://glluch.com/ieee_taxonomy">
+  <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+  <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+  <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+  <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+  <Declaration>
+    <Class IRI="#Term"/>
+  </Declaration>
+  <Declaration>
+    <ObjectProperty IRI="#narrowed"/>
+  </Declaration>
+  <Declaration>
+    <ObjectProperty IRI="#wide"/>
+  </Declaration>
+  <InverseObjectProperties>
+    <ObjectProperty IRI="#narrowed"/>
+    <ObjectProperty IRI="#wide"/>
+  </InverseObjectProperties>
+  <TransitiveObjectProperty>
+    <ObjectProperty IRI="#narrowed"/>
+  </TransitiveObjectProperty>
+  <TransitiveObjectProperty>
+    <ObjectProperty IRI="#wide"/>
+  </TransitiveObjectProperty>
+  <ObjectPropertyDomain>
+    <ObjectProperty IRI="#narrowed"/>
+    <ObjectSomeValuesFrom>
+      <ObjectProperty IRI="#wide"/>
+      <Class IRI="#Term"/>
+    </ObjectSomeValuesFrom>
+  </ObjectPropertyDomain>
+  <ObjectPropertyRange>
+    <ObjectProperty IRI="#narrowed"/>
+    <ObjectSomeValuesFrom>
+      <ObjectProperty IRI="#wide"/>
+      <Class IRI="#Term"/>
+    </ObjectSomeValuesFrom>
+  </ObjectPropertyRange>
+
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Test_Category"/>
+ </ClassAssertion>
+ <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Test_Category</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Test Category</Literal>
+  </AnnotationAssertion>
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Test_1"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Test_1</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Test 1</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Test_1"/>
+    <NamedIndividual IRI="#Test_Category"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Radar_countermeasures"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Radar_countermeasures</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Radar countermeasures</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Radar_countermeasures"/>
+    <NamedIndividual IRI="#Test_1"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Military_equipment"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Military_equipment</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Military equipment</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Military_equipment"/>
+    <NamedIndividual IRI="#Test_Category"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Military_aircraft"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Military_aircraft</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Military aircraft</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Military_aircraft"/>
+    <NamedIndividual IRI="#Military_equipment"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Payloads"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Payloads</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Payloads</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Payloads"/>
+    <NamedIndividual IRI="#Military_aircraft"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Military_satellites"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Military_satellites</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Military satellites</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Military_satellites"/>
+    <NamedIndividual IRI="#Military_equipment"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Weapons"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Weapons</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Weapons</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Weapons"/>
+    <NamedIndividual IRI="#Military_equipment"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Guns"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Guns</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Guns</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Guns"/>
+    <NamedIndividual IRI="#Weapons"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Missiles"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Missiles</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Missiles</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Missiles"/>
+    <NamedIndividual IRI="#Weapons"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Nuclear_weapons"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Nuclear_weapons</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Nuclear weapons</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Nuclear_weapons"/>
+    <NamedIndividual IRI="#Weapons"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Projectiles"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Projectiles</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Projectiles</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Projectiles"/>
+    <NamedIndividual IRI="#Weapons"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Radar"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Radar</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Radar</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Radar"/>
+    <NamedIndividual IRI="#Test_Category"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Computational_and_artificial_intelligence"/>
+ </ClassAssertion>
+ <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Computational_and_artificial_intelligence</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Computational and artificial intelligence</Literal>
+  </AnnotationAssertion>
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Artificial_intelligence"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Artificial_intelligence</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Artificial intelligence</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Artificial_intelligence"/>
+    <NamedIndividual IRI="#Computational_and_artificial_intelligence"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Context_awareness"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Context_awareness</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Context awareness</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Context_awareness"/>
+    <NamedIndividual IRI="#Artificial_intelligence"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Cooperative_systems"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Cooperative_systems</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Cooperative systems</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Cooperative_systems"/>
+    <NamedIndividual IRI="#Artificial_intelligence"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Decision_support_systems"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Decision_support_systems</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Decision support systems</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Decision_support_systems"/>
+    <NamedIndividual IRI="#Artificial_intelligence"/>
+        </ObjectPropertyAssertion> 
+ <ClassAssertion>
+    <Class IRI="#Term"/>
+    <NamedIndividual IRI="#Intelligent_systems"/>
+ </ClassAssertion> 
+  <AnnotationAssertion>
+    <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    <IRI>#Intelligent_systems</IRI>
+    <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">
+    Intelligent systems</Literal>
+  </AnnotationAssertion><ObjectPropertyAssertion>
+    <ObjectProperty IRI="#wide"/>
+    <NamedIndividual IRI="#Intelligent_systems"/>
+    <NamedIndividual IRI="#Artificial_intelligence"/>
+        </ObjectPropertyAssertion> 
+</Ontology>

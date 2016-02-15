@@ -11,29 +11,29 @@ include_once __DIR__ . "/IEEETerm.php";
  */
 class IEEEParser {
  /**
-  * @var $taxonomy string[] The final product. Is an array array "entity => parents[]"
+  * @param string[] $taxonomy The final product. Is an array array "entity => parents[]"
   */
     protected $taxonomy = [];
     
      /**
-  * @var $taxonomyBis string[] The final product. Is an array array "parent => childs[]"
+  * @param string[] $taxonomyBis The final product. Is an array array "parent => childs[]"
   */
     protected $taxonomyBis = [];
     
     
     
      /**
-     * @var $elements IEEETerms[]. Is the result of the function addLevels()
+     * @param IEEETerms[] $elements . Is the result of the function addLevels()
      */
     protected $elements = []; 
     
     /**
-     * @var $lines string[] the original array, with dots.
+     * @param string[] $lines  the original array, with dots.
      */
     protected $lines = [];
     
      /**
-     * @var $diff int The number of dots which separe a child to its parent.
+     * @param int  $diff The number of dots which separe a child to its parent.
      */
     protected $diff = 4;
 

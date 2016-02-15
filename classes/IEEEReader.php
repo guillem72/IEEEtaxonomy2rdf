@@ -19,12 +19,12 @@ namespace taxo2rdf;
 class IEEEReader {
 
     /**
-      @var $lines string[] internal array to process the data
+      @param string[] $lines  internal array to process the data
      *      */
     protected $lines = array();
 
     /**
-      @var $filename string the name of the file to be process.
+      @param string $filename  the name of the file to be process.
      * The class is robust against term in two diferents lines, as 
      * ............Polarimetric synthetic aperture
       radar
@@ -86,7 +86,7 @@ class IEEEReader {
 
     /**
      *  Remove terms made only by white space
-     * @var $values string[] The array with some values maybe equal to ""
+     * @param string[]  $values The array with some values maybe equal to ""
      * @return string[] All elements of the array are different from "" 
      *      */
     protected function isNotEmpty($values) {
