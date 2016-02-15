@@ -6,13 +6,19 @@ namespace taxo2rdf;
 
 /**
  * Read data from IEEE taxonomy and sent it in an array made by one term
- *  (and all preceding dots) per line. The class is robust against term in two diferents lines, as 
- * "............Polarimetric synthetic aperture\n
+ *  (and all preceding dots) per line. The class is robust against term in two diferents lines, as
+ *  
+ * "............Polarimetric synthetic aperture
+ * 
  * radar"
+ * 
  * if the second line starts with lowercase. 
+ * 
  * But the class doesn't separete terms in the same line as
+ * 
  *  "............Adaptive arrays............Butler matrices"
- * . To avoid this issue is possible to fix the file manualy with regex \w\.+\w
+ * 
+ * . To avoid this issue is possible to fix the file manualy with regex **\w\.+\w**
  *
  * @author Guillem LLuch Moll <guillem72@gmail.com>
  */
@@ -26,8 +32,11 @@ class IEEEReader {
     /**
       @param string $filename  the name of the file to be process.
      * The class is robust against term in two diferents lines, as 
+     * 
      * ............Polarimetric synthetic aperture
+     * 
       radar
+     * 
      * if the second line starts with lowercase
      *      */
     protected $filename = false;

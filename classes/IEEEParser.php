@@ -5,25 +5,26 @@ namespace taxo2rdf;
 include_once __DIR__ . "/IEEETerm.php";
 
 /**
- * A class to transform the IEEE taxonomy in an array "entity => parent entity". 
+ * A class to transform the IEEE taxonomy in an array "*entity => parent entity*" or
+ * "*parent => immediate child*".  
  *
  * @author Guillem LLuch Moll <guillem72@gmail.com>
  */
 class IEEEParser {
  /**
-  * @param string[] $taxonomy The final product. Is an array array "entity => parents[]"
+  * @param string[] $taxonomy The final product. Is an array array "*entity => immediate parents[]*"
   */
     protected $taxonomy = [];
     
      /**
-  * @param string[] $taxonomyBis The final product. Is an array array "parent => childs[]"
+  * @param string[] $taxonomyBis The final product. Is an array array "*parent => immediate childs[]*"
   */
     protected $taxonomyBis = [];
     
     
     
      /**
-     * @param IEEETerms[] $elements . Is the result of the function addLevels()
+     * @param IEEETerms[] $elements . Is the result of the function *addLevels()*
      */
     protected $elements = []; 
     
