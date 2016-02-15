@@ -1,8 +1,8 @@
 <?php
-
 namespace taxo2rdf;
 
 include_once __DIR__ . "/IEEETerm.php";
+include_once __DIR__ . "/iToJson.php";
 
 /**
  * A class to transform the IEEE taxonomy in an array "*entity => parent entity*" or
@@ -10,7 +10,7 @@ include_once __DIR__ . "/IEEETerm.php";
  *
  * @author Guillem LLuch Moll <guillem72@gmail.com>
  */
-class IEEEParser {
+class IEEEParser  implements iToJson{
  /**
   * @param string[] $taxonomy The final product. Is an array array "*entity => immediate parents[]*"
   */
@@ -130,6 +130,20 @@ class IEEEParser {
         $temporal = \str_replace(".", "", $dot_word);
         $num_dots = strlen($dot_word) - strlen($temporal);
         return $num_dots;
+    }
+
+    /**
+     *  This function is for save the results in a json format, with the idea of easy inspect the data.
+     * @param string $filename The path where the two files will be created.     * **Note: filename is a path and could be ""**
+     * @return boolean True if the files where saved. 
+     *      */
+    public function toJsonSave($filename) {
+        if (count($this->taxonomy) < 1 OR \count($this->taxonomyBis) < 1) {
+            return false;
+        }
+        $f1=  \file_put_contents($filename."child2parents.json",  \json_encode($this->taxonomy, \JSON_UNESCAPED_UNICODE | \JSON_PRETTY_PRINT));	
+        $f2= \file_put_contents($filename."parent2childs.json",  \json_encode($this->taxonomyBis, \JSON_UNESCAPED_UNICODE | \JSON_PRETTY_PRINT));	
+        return ($f1 AND $f2);
     }
 
 //function

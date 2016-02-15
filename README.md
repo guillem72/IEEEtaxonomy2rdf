@@ -6,7 +6,7 @@ The aim of this project is to get the information in [IEEE taxonomy](http://www.
 
 ##Information
 
-This is a php project for the comand line. It is not still complete. The version used was php 5.6
+This is a php project for the comand line. The version used was php 5.6. 
 
 ##How to use 
 
@@ -17,6 +17,8 @@ it with [geany](http://www.geany.org/) and the regex \w\.+\w
 to the IEEE part.
 3. Then use index.php, instead of the test file ultra_mini.txt put your file.
 4. The result will be in **resources** as **ieeeTaxonomyOWL.owl**.
+5. If there are some spaces in the end of some words (the last in the original pdf) it is possible to remove
+them select these spaces in a term and delete all them with geany or other editor.
 
 
 
