@@ -65,10 +65,11 @@ class WriteOwl {
     /**
      * An internal function which merge some xml to create the entries for each Entity
      * @param  string $node The node.
-     * @param  string $parent The parent of the node. 
+     * @param  string $parents The parents of the node. 
      *      */
     protected function buildSnipet($node, $parents) {
-        $nodeId = \str_replace(" ", "_", $node);
+        $nodeId = \str_replace(" ", "_", \strtolower($node));
+        echo "node =".$node.", nodeid=".$nodeId.PHP_EOL;
         if ($parents[0] !== $this->root) {
             return " <ClassAssertion>
     <Class IRI=\"#Term\"/>
@@ -105,7 +106,7 @@ class WriteOwl {
     }
 
     protected function buildSnipetRoot($node) {
-        $nodeId = \str_replace(" ", "_", $node);
+        $nodeId = \str_replace(" ", "_", \strtolower($node));
         return " <ClassAssertion>
     <Class IRI=\"#Term\"/>
     <NamedIndividual IRI=\"#" . $nodeId . "\"/>

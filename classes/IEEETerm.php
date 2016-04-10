@@ -28,7 +28,7 @@ class IEEETerm {
     }
 
     function setTerm($term) {
-        $this->term =trim($term);
+        $this->term =strtolower(trim($term));
     }
 
     function setLevel($level) {
@@ -36,7 +36,7 @@ class IEEETerm {
     }
 
     function __construct($term, $level) {
-        $this->term = trim($term);
+        $this->term = strtolower(trim($term));
         $this->level = trim($level);
     }
 

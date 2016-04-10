@@ -15,7 +15,7 @@ This is a php project for the comand line. The version used was php 5.6.
 it with [geany](http://www.geany.org/) and the regex \w\.+\w
 2. Be sure that all lines starting with upper case are a proper term in the taxonomy. Pay attention
 to the IEEE part.
-3. Then use index.php, instead of the test file ultra_mini.txt put your file.
+3. Then use index.php and instead of the test file ultra_mini.txt put your file.
 4. The result will be in **resources** as **ieeeTaxonomyOWL.owl**.
 5. If there are some spaces in the end of some words (the last in the original pdf) it is possible to remove
 them select these spaces in a term and delete all them with geany or other editor.

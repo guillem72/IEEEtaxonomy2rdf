@@ -85,6 +85,7 @@ class IEEEParser  implements iToJson{
         $ultim[0] = \array_shift($rest_words);
         while (\count($rest_words) > 0) {
             $actual = \array_shift($rest_words);
+            
             $this->add($actual, $ultim);
             $ultim[$actual->level] = trim($actual->term);
         }//end while
@@ -97,10 +98,11 @@ class IEEEParser  implements iToJson{
         if (!isset($this->taxonomy[trim($child->term)])) {
                 $this->taxonomy[trim($child->term)] = [];
             }
-            if (\is_object($candidates[$child->level - 1])) {//sometimes is an object, sometimes is a string
+           //var_dump($candidates);
+            if (@\is_object($candidates[$child->level - 1])) {//sometimes is an object, sometimes is a string
                $parent=\trim($candidates[$child->level - 1]->term);
                } else {
-                 $parent=  \trim($candidates[$child->level - 1]);
+                 if (isset($candidates[$child->level - 1]))  $parent=  \trim($candidates[$child->level - 1]);
                 //$this->taxonomy[trim($actual->term)] = trim($ultim[$actual->level - 1]);
             }
    \array_push($this->taxonomy[trim($child->term)], $parent);  
